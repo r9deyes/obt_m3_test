@@ -2,6 +2,8 @@ from django.conf.urls import url
 from objectpack import desktop
 from app.controller import controller
 
+from . import actions
+#from . import controller
 
 def register_urlpatterns():
   """
@@ -16,7 +18,10 @@ def register_actions():
    """
   return controller.packs.extend([
 
-    # YourActionPack()
+    actions.DjangoContentTypePack(),
+    actions.DjangoUserPack(),
+    actions.DjangoGroupPack(),
+    actions.DjangoPermissionPack(),
 
    ])
 
