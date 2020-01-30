@@ -22,6 +22,9 @@ def register_actions():
     actions.DjangoUserPack(),
     actions.DjangoGroupPack(),
     actions.DjangoPermissionPack(),
+    actions.DjangoUserGroupsPack(),
+    actions.QuestionPack(),
+    actions.AnswerPack(),
 
    ])
 
@@ -31,5 +34,5 @@ def register_desktop_menu():
   """
   desktop.uificate_the_controller(
       controller,
-      menu_root=desktop.MainMenu.SubMenu('Demo')
+      menu_root=desktop.MainMenu.SubMenu('App')
   )
