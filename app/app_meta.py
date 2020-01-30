@@ -22,9 +22,6 @@ def register_actions():
     actions.DjangoUserPack(),
     actions.DjangoGroupPack(),
     actions.DjangoPermissionPack(),
-    actions.DjangoUserGroupsPack(),
-    actions.QuestionPack(),
-    actions.AnswerPack(),
 
    ])
 
