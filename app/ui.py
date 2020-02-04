@@ -2,6 +2,7 @@ from objectpack.ui import BaseEditWindow, make_combo_box, _create_dict_select_fi
 from m3_ext.ui import all_components as ext
 
 from django.contrib.auth.models import Group, Permission
+from django.utils import timezone
 from . import controller
 from . import models
 
@@ -54,6 +55,27 @@ class DjangoUserEditWindow(BaseEditWindow):
             anchor='100%',
             checked = True)
 
+        self.field__date_joined = ext.ExtDateField(
+            label=u'Дата создания',
+            name='date_joined',
+            anchor='100%',
+            value={'default':timezone.now(),'format':'d m, Y',},
+            format = 'd m, Y',
+            )
+
+        self.field__last_login = ext.ExtDateField(
+            label=u'Последний вход',
+            name='last_login',
+            anchor='100%',
+            )
+        
+        self.field__is_superuser = ext.ExtCheckBox(
+            label=u'Суперпользователь',
+            name='is_superuser',
+            anchor='100%',
+            )
+    
+
 
     def _do_layout(self):
         super(DjangoUserEditWindow, self)._do_layout()
@@ -63,8 +85,11 @@ class DjangoUserEditWindow(BaseEditWindow):
             self.field__first_name,
             self.field__last_name,
             self.field__email,
+            self.field__date_joined,
             self.field__is_staff,
-            self.field__is_active,           
+            self.field__is_superuser,
+            self.field__is_active,  
+            self.field__last_login,
         ))
 
     def set_params(self, params):
